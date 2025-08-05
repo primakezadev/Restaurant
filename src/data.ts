@@ -161,7 +161,7 @@ export const featuredProducts: Products = [
     id: 8,
     title: "Mediterranean Delight",
     desc: "Embark on a culinary journey with this Mediterranean-inspired creation, featuring zesty feta cheese, Kalamata olives, sun-dried tomatoes, and a sprinkle of oregano.",
-    img: "/assets/p2(1).png",
+    img: "/assets/p2.png",
     price: 32.9,
     options: [
       {
