@@ -21,7 +21,7 @@ const LoginPage = () => {
         <div className="p-10 flex flex-col justify-center gap-6 md:w-1/2">
           <h1 className="font-bold text-2xl xl:text-3xl text-gray-800">Welcome</h1>
           <p className="text-gray-600">
-            Log into your account or create a new one using social buttons
+            Log into your account or create a new one using social buttons and accordingly
           </p>
 
           <button className="flex items-center gap-4 p-4 ring-1 ring-orange-100 rounded-md hover:bg-orange-50 transition">

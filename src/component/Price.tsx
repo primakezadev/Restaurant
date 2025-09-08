@@ -1,14 +1,18 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 type Props = {
   price: number;
   id: number;
   options?: { title: string; additionalPrice: number }[];
+  title: string;
+  img?: string;
 };
 
-const Price = ({ price, id, options }: Props) => {
+const Price = ({ price, id, options, title, img }: Props) => {
+  const { addItem } = useCart();
   const [total, setTotal] = useState(price);
   const [quantity, setQuantity] = useState(1);
   const [selected, setSelected] = useState(0);
@@ -18,6 +22,20 @@ const Price = ({ price, id, options }: Props) => {
       quantity * (options ? price + options[selected].additionalPrice : price)
     );
   }, [quantity, selected, options, price]);
+
+  const handleAddToCart = () => {
+    const selectedOption = options ? options[selected] : undefined;
+    const itemPrice = selectedOption ? price + selectedOption.additionalPrice : price;
+
+    addItem({
+      id,
+      title,
+      price: itemPrice,
+      quantity,
+      options: selectedOption,
+      img,
+    });
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -58,7 +76,10 @@ const Price = ({ price, id, options }: Props) => {
           </div>
         </div>
         {/* CART BUTTON */}
-        <button className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500">
+        <button
+          className="uppercase w-56 bg-red-500 text-white p-3 ring-1 ring-red-500"
+          onClick={handleAddToCart}
+        >
           Add to Cart
         </button>
       </div>
