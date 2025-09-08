@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link"
-import Image from "next/image";
+
 import { FaCartArrowDown } from "react-icons/fa";
 import { useCart } from "@/context/CartContext";
 
