@@ -1,15 +1,16 @@
-"use client"
+"use client";
+
 import React, { useState, useEffect } from "react";
 
-const CountDown = () => {
-  const targetDate = new Date("10/19/2026").getTime();
-  const [difference, setDifference] = useState(
-    targetDate - new Date().getTime()
+const CountDown: React.FC = () => {
+  const targetDate = new Date("2026-10-19T00:00:00").getTime();
+  const [difference, setDifference] = useState<number>(
+    targetDate - Date.now()
   );
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setDifference(targetDate - new Date().getTime());
+      setDifference(targetDate - Date.now());
     }, 1000);
 
     return () => clearInterval(timer);
@@ -17,7 +18,7 @@ const CountDown = () => {
 
   const d = Math.floor(difference / (1000 * 60 * 60 * 24));
   const h = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((difference / 1000 / 60) % 60);
+  const m = Math.floor((difference / (1000 * 60)) % 60);
   const s = Math.floor((difference / 1000) % 60);
 
   return (
@@ -28,4 +29,3 @@ const CountDown = () => {
 };
 
 export default CountDown;
-n
